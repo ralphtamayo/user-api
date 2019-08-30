@@ -3,9 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Core\UserRepository")
@@ -93,6 +93,7 @@ class User extends BaseEntity implements UserInterface, \Serializable
 		if (empty($roles)) {
 			$roles[] = 'ROLE_USER';
 		}
+
 		return array_unique($roles);
 	}
 
